@@ -1,0 +1,33 @@
+<Project>
+  <!--
+    Shared MSBuild defaults for every project under this repo.
+    Change version / language settings here once instead of per csproj.
+  -->
+  <PropertyGroup>
+    <RepoRoot>$(MSBuildThisFileDirectory)</RepoRoot>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+
+    <!-- Product identity (override per project if needed) -->
+    <Product>IcoGenerator</Product>
+    <Company>IcoGenerator</Company>
+    <Authors>IcoGenerator</Authors>
+    <Copyright>Copyright (c) IcoGenerator contributors</Copyright>
+    <Version>0.1.0</Version>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <FileVersion>0.1.0.0</FileVersion>
+    <InformationalVersion>$(Version)</InformationalVersion>
+
+    <!-- Analysis defaults -->
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <!-- Framework defaults: libraries/CLI use net10.0; WinUI overrides with windows TFM -->
+  <PropertyGroup Condition="'$(MSBuildProjectName)' != 'IcoGenerator.App'">
+    <TargetFramework Condition="'$(TargetFramework)' == ''">net10.0</TargetFramework>
+  </PropertyGroup>
+</Project>

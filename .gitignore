@@ -1,0 +1,39 @@
+## .NET
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+ARM64/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+*.nupkg
+project.lock.json
+
+## Script outputs
+artifacts/
+TestResults/
+*.ico.bak
+
+## Local secrets / licenses (if ever used)
+sixlabors.lic
+*.lic
+
+## WinUI / MSIX
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+*_StoreKey.pfx
+*.appx
+*.msix
+*.msixbundle
+
+## OS / IDE
+Thumbs.db
+Desktop.ini
+.idea/
+*.swp

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>IcoGenerator.Core</RootNamespace>
+    <Description>Image to multi-resolution ICO conversion library.</Description>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SixLabors.ImageSharp" />
+    <PackageReference Include="System.CommandLine" />
+  </ItemGroup>
+
+</Project>

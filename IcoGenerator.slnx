@@ -1,0 +1,22 @@
+<Solution>
+  <!-- Application projects -->
+  <Project Path="IcoGenerator.App/IcoGenerator.App.csproj" />
+  <Project Path="IcoGenerator.Cli/IcoGenerator.Cli.csproj" />
+  <Project Path="IcoGenerator.Core/IcoGenerator.Core.csproj" />
+
+  <!--
+    Shared branding / icon resources (visible in Solution Explorer as solution items).
+    Runtime packaging is owned by IcoGenerator.App.csproj Content includes;
+    CLI links the multi-size AppIcon.ico as ApplicationIcon.
+  -->
+  <Folder Name="/Assets/Icons/">
+    <File Path="IcoGenerator.App/Assets/Icons/AppIcon.ico" />
+    <File Path="IcoGenerator.App/Assets/Icons/AppIcon_16.ico" />
+    <File Path="IcoGenerator.App/Assets/Icons/AppIcon_24.ico" />
+    <File Path="IcoGenerator.App/Assets/Icons/AppIcon_32.ico" />
+    <File Path="IcoGenerator.App/Assets/Icons/AppIcon_48.ico" />
+    <File Path="IcoGenerator.App/Assets/Icons/AppIcon_64.ico" />
+    <File Path="IcoGenerator.App/Assets/Icons/AppIcon_128.ico" />
+    <File Path="IcoGenerator.App/Assets/Icons/AppIcon_256.ico" />
+  </Folder>
+</Solution>

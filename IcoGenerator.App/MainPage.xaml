@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="IcoGenerator_App.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:IcoGenerator_App"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Padding="24" RowSpacing="16" ColumnSpacing="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource TitleTextBlockStyle}"
+                Text="IcoGenerator" />
+            <TextBlock
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Opacity="0.75"
+                Style="{StaticResource BodyTextBlockStyle}"
+                Text="Convert PNG / JPG / WebP and other images into Windows .ico files. Each checked size becomes its own .ico, plus one combined multi-resolution .ico."
+                TextWrapping="WrapWholeWords" />
+
+            <!-- Source -->
+            <TextBox
+                x:Name="InputPathBox"
+                Grid.Row="2"
+                Grid.Column="0"
+                Header="Source image"
+                PlaceholderText="Browse or paste a full path to an image file..." />
+            <Button
+                x:Name="BrowseInputButton"
+                Grid.Row="2"
+                Grid.Column="1"
+                MinWidth="120"
+                VerticalAlignment="Bottom"
+                Click="BrowseInputButton_Click"
+                Content="Browse..." />
+
+            <!-- Output -->
+            <TextBox
+                x:Name="OutputPathBox"
+                Grid.Row="3"
+                Grid.Column="0"
+                Header="Output base .ico (multi-resolution)"
+                PlaceholderText="Defaults to source name with .ico extension" />
+            <Button
+                x:Name="BrowseOutputButton"
+                Grid.Row="3"
+                Grid.Column="1"
+                MinWidth="120"
+                VerticalAlignment="Bottom"
+                Click="BrowseOutputButton_Click"
+                Content="Save as..." />
+
+            <!-- Size checkboxes -->
+            <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Spacing="8">
+                <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="Icon sizes" />
+                <TextBlock
+                    Opacity="0.75"
+                    Style="{StaticResource CaptionTextBlockStyle}"
+                    Text="Each checked size writes a separate file (e.g. app_16.ico) and is also packed into the multi-resolution app.ico."
+                    TextWrapping="WrapWholeWords" />
+                <StackPanel Orientation="Horizontal" Spacing="16">
+                    <CheckBox x:Name="Size16Check" Content="16 x 16" IsChecked="True" />
+                    <CheckBox x:Name="Size32Check" Content="32 x 32" IsChecked="True" />
+                    <CheckBox x:Name="Size48Check" Content="48 x 48" IsChecked="True" />
+                    <CheckBox x:Name="Size64Check" Content="64 x 64" IsChecked="True" />
+                    <CheckBox x:Name="Size128Check" Content="128 x 128" IsChecked="True" />
+                    <CheckBox x:Name="Size256Check" Content="256 x 256" IsChecked="True" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <HyperlinkButton Click="SelectAllSizes_Click" Content="Select all" />
+                    <HyperlinkButton Click="SelectNoneSizes_Click" Content="Select none" />
+                    <HyperlinkButton Click="SelectDefaultSizes_Click" Content="Defaults" />
+                </StackPanel>
+            </StackPanel>
+
+            <CheckBox
+                x:Name="WriteSeparateCheck"
+                Grid.Row="5"
+                Grid.ColumnSpan="2"
+                Content="Also write a separate .ico file for each selected size (app_16.ico, app_32.ico, ...)"
+                IsChecked="True" />
+
+            <!-- Generate -->
+            <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal" Spacing="12">
+                <Button
+                    x:Name="ConvertButton"
+                    MinWidth="140"
+                    Click="ConvertButton_Click"
+                    Content="Generate ICO"
+                    Style="{StaticResource AccentButtonStyle}" />
+                <ProgressRing
+                    x:Name="BusyRing"
+                    Width="28"
+                    Height="28"
+                    IsActive="False"
+                    Visibility="Collapsed" />
+                <TextBlock
+                    x:Name="StatusText"
+                    VerticalAlignment="Center"
+                    Opacity="0.85"
+                    Text="Ready."
+                    TextWrapping="WrapWholeWords" />
+            </StackPanel>
+
+            <InfoBar
+                x:Name="ResultBar"
+                Grid.Row="7"
+                Grid.ColumnSpan="2"
+                VerticalAlignment="Top"
+                IsClosable="True"
+                IsOpen="False" />
+        </Grid>
+    </ScrollViewer>
+</Page>

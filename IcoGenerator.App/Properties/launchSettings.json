@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "IcoGenerator.App (Unpackaged)": {
+      "commandName": "Project"
+    },
+    "IcoGenerator.App (Package)": {
+      "commandName": "MsixPackage"
+    }
+  }
+}
